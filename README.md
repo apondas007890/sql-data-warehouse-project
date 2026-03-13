@@ -16,7 +16,7 @@ This project follows **Medallion Architecture** with **Bronze, Silver, and Gold 
 
 I manage my data engineering workflows using **Notion** to maintain **data quality, architectural integrity, and clear progress tracking**. You can explore real-time progress, task breakdowns here:
 
-[![Notion](https://img.shields.io/badge/Project_Roadmap-000000?style=for-the-badge&logo=notion&logoColor=white)](https://www.notion.so/SQL-Data-Warehouse-Project-31d91e8301d0808ba82ed4f9384bcfdd?source=copy_link)
+[![Notion](https://img.shields.io/badge/Project_Roadmap-333333?style=for-the-badge&logo=notion&logoColor=white)](https://www.notion.so/SQL-Data-Warehouse-Project-31d91e8301d0808ba82ed4f9384bcfdd?source=copy_link)
 ---
 
 ## 📖 Project Overview

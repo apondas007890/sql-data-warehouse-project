@@ -1,6 +1,6 @@
 # Data Warehouse and Analytics Project 🚀
 
-Welcome to the **Data Warehouse and Analytics Project** repository! This project demonstrates a comprehensive data warehousing and analytics solution—from raw data ingestion to actionable insights. It is designed as a portfolio project to highlight industry best practices in **data engineering**, **ETL**, **data modeling**, and **analytics**.  
+Welcome to the **Data Warehouse** repository! This project demonstrates a comprehensive **data engineering and data warehousing solution**—from raw data ingestion to building structured, business-ready data models. It is designed as a portfolio project to highlight industry best practices in **data engineering**, **ETL**, and **data modeling**. 
 
 ---
 
@@ -10,10 +10,13 @@ This project follows **Medallion Architecture** with **Bronze, Silver, and Gold 
 
 - **Bronze Layer:** Stores raw data exactly as it comes from source systems (CSV files from ERP and CRM) in SQL Server.  
 - **Silver Layer:** Cleans, standardizes, and normalizes the data to prepare it for analytical modeling.  
-- **Gold Layer:** Contains business-ready data modeled in a **star schema** for reporting and analytics.  
+- **Gold Layer:** Contains business-ready data modeled in a **star schema** for easy querying and integration.    
 
 ![Data Architecture](docs/2_data_architecture.png)
 
+I manage my data engineering workflows using **Notion** to maintain **data quality, architectural integrity, and clear progress tracking**. You can explore real-time progress, task breakdowns here:
+
+[![Notion](https://img.shields.io/badge/Project_Roadmap-000000?style=for-the-badge&logo=notion&logoColor=white)](https://www.notion.so/SQL-Data-Warehouse-Project-31d91e8301d0808ba82ed4f9384bcfdd?source=copy_link)
 ---
 
 ## 📖 Project Overview
@@ -22,8 +25,7 @@ This project includes the following components:
 
 1. **Data Architecture:** Design a modern data warehouse using the **Medallion Architecture** (Bronze → Silver → Gold).  
 2. **ETL Pipelines:** Extract, transform, and load data from multiple source systems into the warehouse.  
-3. **Data Modeling:** Create **fact and dimension tables** optimized for analytical queries.  
-4. **Analytics & Reporting:** Generate SQL-based reports and dashboards for insights into business operations.  
+3. **Data Modeling:** Create **fact and dimension tables** optimized for analytical queries.   
 
 ---
 
@@ -35,7 +37,6 @@ This repository is an excellent resource to showcase expertise in:
 - Data Engineering & Architecture  
 - ETL Pipeline Development  
 - Data Modeling (Star Schema, Fact & Dimension Tables)  
-- Data Analytics & Business Intelligence  
 
 ---
 
@@ -64,19 +65,7 @@ Develop a modern data warehouse in SQL Server to consolidate sales and customer 
 - **Data Quality:** Clean and standardize before analysis.  
 - **Integration:** Merge multiple sources into a single analytical model.  
 - **Scope:** Latest datasets only (no historical tracking required).  
-- **Documentation:** Provide clear schema and data catalog for stakeholders.  
-
----
-
-### **Data Analysis – BI & Reporting**
-**Objective:**  
-Provide SQL-based analytics to uncover insights about:  
-
-- Customer behavior  
-- Product performance  
-- Sales trends  
-
-These insights enable stakeholders to make **data-driven decisions**.  
+- **Documentation:** Provide clear schema and data catalog for stakeholders.   
 
 ---
 
@@ -134,5 +123,4 @@ Hi! I’m **Apon Kumar Das**, a tech enthusiast and aspiring **Data Engineer**. 
 This repository showcases my learning journey and hands-on projects in **Data Warehousing, ETL pipelines, and data modeling**. It’s my way of sharing knowledge, demonstrating growth, and building a **professional data engineering portfolio**.  
 
 📚🌱 I’m eager to learn, grow, and connect with others in the data engineering community:  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOUR_LINKEDIN_USERNAME)  
-[![Portfolio](https://img.shields.io/badge/Portfolio-FF6F61?style=for-the-badge&logo=internet-explorer&logoColor=white)](https://YOUR_PORTFOLIO_URL)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOUR_LINKEDIN_USERNAME)  [![Portfolio](https://img.shields.io/badge/Portfolio-FF6F61?style=for-the-badge&logo=internet-explorer&logoColor=white)](https://YOUR_PORTFOLIO_URL)

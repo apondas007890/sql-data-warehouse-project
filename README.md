@@ -84,13 +84,14 @@ Develop a modern data warehouse in SQL Server to consolidate sales and customer 
 │       └── 📄 PX_CAT_G1V2.csv          # Product category details
 │
 ├── 📁 docs/                            # Project documentation and architecture
-│   ├── 📝 ETL.md                        # Overview of ETL processes and techniques
+│   ├── 📝 1_project_requirements.md    # Dependencies and requirements for the project
 │   ├── 🖼️ 2_data_architecture.png       # Data architecture diagram
 │   ├── 📝 3_naming_conventions_followed.md # Naming conventions for tables, columns, and files
 │   ├── 🖼️ 4_data_integration.png        # Data integration diagram
 │   ├── 🖼️ 5_data_flow.png               # Data flow diagram
 │   ├── 🖼️ 6_data_model.png              # Data models (star schema / fact-dimension)
-│   └── 📝 7_data_catalog.md             # Dataset catalog with field descriptions and metadata
+│   ├── 📝 7_data_catalog.md             # Dataset catalog with field descriptions and metadata
+│   └── 📝 ETL.md                        # Overview of ETL processes and techniques
 │
 ├── 📁 scripts/                         # SQL scripts for ETL and transformations
 │   ├── 📁 bronze/                       # Scripts for extracting and loading raw data
@@ -99,7 +100,7 @@ Develop a modern data warehouse in SQL Server to consolidate sales and customer 
 │   ├── 📁 silver/                       # Scripts for cleaning and transforming data
 │   │   ├── 📄 ddl_silver.sql            # DDL for silver tables
 │   │   └── 📄 proc_load_silver.sql      # Procedure to load silver layer
-│   ├── 📁 gold/                         # Scripts for creating analytical models
+│   ├── 📁 gold/                         # Scripts for creating structured models
 │   │   └── 📄 ddl_gold.sql              # DDL for gold tables
 │   └── 📄 init_database.sql             # Script to initialize database and schemas
 │
@@ -108,11 +109,6 @@ Develop a modern data warehouse in SQL Server to consolidate sales and customer 
 │   └── 📄 quality_checks_gold.sql       # Data quality checks for gold layer
 │
 ├── 📝 README.md                         # Project overview, instructions, and usage
-├── 📄 LICENSE                           # License information for the repository
-├── 📄 .gitignore                        # Files and directories ignored by Git
-└── 📄 requirements.txt                  # Dependencies and requirements for the project
-
-
 ---
 
 
@@ -123,4 +119,5 @@ Hi! I’m **Apon Kumar Das**, a tech enthusiast and aspiring **Data Engineer**. 
 This repository showcases my learning journey and hands-on projects in **Data Warehousing, ETL pipelines, and data modeling**. It’s my way of sharing knowledge, demonstrating growth, and building a **professional data engineering portfolio**.  
 
 📚🌱 I’m eager to learn, grow, and connect with others in the data engineering community:  
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOUR_LINKEDIN_USERNAME)  [![Portfolio](https://img.shields.io/badge/Portfolio-FF6F61?style=for-the-badge&logo=internet-explorer&logoColor=white)](https://YOUR_PORTFOLIO_URL)

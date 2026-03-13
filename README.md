@@ -1,4 +1,4 @@
-# Data Warehouse and Analytics Project 🚀
+# Data Warehouse Project 🚀
 
 Welcome to the **Data Warehouse** repository! This project demonstrates a comprehensive **data engineering and data warehousing solution**—from raw data ingestion to building structured, business-ready data models. It is designed as a portfolio project to highlight industry best practices in **data engineering**, **ETL**, and **data modeling**. 
 
@@ -74,7 +74,7 @@ Develop a modern data warehouse in SQL Server to consolidate sales and customer 
 ```text
 📦 data-warehouse-project/
 │
-├── 📁 datasets/                        # Raw datasets (ERP and CRM)
+├── 📁 datasets/                        # Raw datasets used for the project (ERP and CRM data)
 │   ├── 📁 source_crm/                  # CRM system datasets
 │   │   ├── 📄 cust_info.csv            # Customer information
 │   │   ├── 📄 prd_info.csv             # Product information
@@ -84,32 +84,33 @@ Develop a modern data warehouse in SQL Server to consolidate sales and customer 
 │       ├── 📄 LOC_A101.csv             # Location master data
 │       └── 📄 PX_CAT_G1V2.csv          # Product category details
 │
-├── 📁 docs/                            # Documentation & Architecture
-│   ├── 📝 1_project_requirements.md    # Requirements
+├── 📁 docs/                            # Project documentation and architecture
+│   ├── 📝 1_project_requirements.md    # Dependencies and requirements for the project
 │   ├── 🖼️ 2_data_architecture.png      # Architecture diagram
-│   ├── 📝 3_naming_conventions.md      # Standards
-│   ├── 🖼️ 4_data_integration.png       # Integration diagram
-│   ├── 🖼️ 5_data_flow.png              # Flow diagram
-│   ├── 🖼️ 6_data_model.png             # Star Schema / Models
-│   ├── 📝 7_data_catalog.md            # Metadata & Data Dictionary
-│   └── 📝 ETL.md                       # ETL Overview
+│   ├── 📝 3_naming_conventions.md      # Naming conventions for tables, columns, and files
+│   ├── 🖼️ 4_data_integration.png       # Data integration diagram
+│   ├── 🖼️ 5_data_flow.png              # Data flow diagram
+│   ├── 🖼️ 6_data_model.png             # Data models (star schema / fact-dimension)
+│   ├── 📝 7_data_catalog.md            # Dataset catalog with field descriptions and metadata
+│   └── 📝 ETL.md                       # Overview of ETL processes and techniques
 │
-├── 📁 scripts/                         # SQL ETL & Transformations
-│   ├── 📁 bronze/                      # Extract & Load
-│   │   ├── 📄 ddl_bronze.sql           # Bronze DDL
-│   │   └── 📄 proc_load_bronze.sql     # Bronze Procedure
-│   ├── 📁 silver/                      # Clean & Transform
-│   │   ├── 📄 ddl_silver.sql           # Silver DDL
-│   │   └── 📄 proc_load_silver.sql     # Silver Procedure
-│   ├── 📁 gold/                        # Business Models
-│   │   └── 📄 ddl_gold.sql             # Gold DDL
-│   └── 📄 init_database.sql            # Setup DB & Schemas
+├── 📁 scripts/                         # SQL scripts for ETL and transformations
+│   ├── 📁 bronze/                      # Scripts for extracting and loading raw data
+│   │   ├── 📄 ddl_bronze.sql           # DDL for bronze tables
+│   │   └── 📄 proc_load_bronze.sql     # Procedure to load bronze layer
+│   ├── 📁 silver/                      # Scripts for cleaning and transforming data
+│   │   ├── 📄 ddl_silver.sql           # DDL for silver tables
+│   │   └── 📄 proc_load_silver.sql     # Procedure to load silver layer
+│   ├── 📁 gold/                        # Scripts for creating structured models
+│   │   └── 📄 ddl_gold.sql             # DDL for gold tables
+│   └── 📄 init_database.sql            # Script to initialize database and schemas
 │
-├── 📁 tests/                           # Quality Checks
-│   ├── 📄 quality_checks_silver.sql    # Silver QC
-│   └── 📄 quality_checks_gold.sql      # Gold QC
+├── 📁 tests/                           # Test scripts and quality checks
+│   ├── 📄 quality_checks_silver.sql    # Data quality checks for silver layer
+│   └── 📄 quality_checks_gold.sql      # Data quality checks for gold layer
 │
-└── 📝 README.md                        # Project Overview
+└── 📝 README.md                        # Project overview, instructions, and usage
+```
 ---
 
 

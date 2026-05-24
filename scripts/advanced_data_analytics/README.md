@@ -1,178 +1,700 @@
 # 📊 Advanced Data Analytics Layer
 
-This folder contains SQL scripts used for advanced analytical exploration on the Gold Layer of the Data Warehouse.
+The **Advanced Data Analytics Layer** is the analytical part of the Data Warehouse where raw business data is transformed into meaningful insights using advanced SQL techniques.
 
-This layer focuses on answering real business questions using advanced SQL techniques such as window functions, CTEs, subqueries, and complex aggregations.
+This layer focuses on answering real business questions by analyzing trends, performance, customer behavior, product contribution, and business growth patterns.
 
-It bridges the gap between raw analytical tables and business decision-making by converting data into meaningful insights.
+It sits on top of the **Gold Layer** and converts clean analytical tables into decision-making insights.
 
 ---
 
-# 🎯 Objectives
+# 🧠 What is Advanced Data Analytics?
 
-- Analyze business performance using SQL
-- Identify trends and patterns in data
+Advanced Data Analytics is the process of exploring data deeply to discover:
+
+- Trends
+- Patterns
+- Performance changes
+- Business opportunities
+- Customer behavior
+- Growth or decline indicators
+
+Unlike basic reporting, advanced analytics does not only show numbers.
+
+It explains:
+
+- What happened
+- Why it happened
+- How it changed over time
+- Which entities contributed the most
+- What actions should be taken
+
+---
+
+# 🎯 Why Do We Use Advanced Analytics?
+
+Businesses generate huge amounts of data every day.
+
+Without analytics, the data has little value.
+
+Advanced analytics helps organizations:
+
+- Make data-driven decisions
+- Track business growth
+- Detect performance problems
+- Identify top customers and products
 - Compare current vs historical performance
-- Segment customers and products
-- Measure contribution of business entities
-- Support data-driven decision making
-- Build KPI and reporting logic
+- Understand market behavior
+- Improve operational efficiency
 
 ---
 
-# 🧠 Core Analytical Flow
+# ⏰ When Do We Use Advanced Analytics?
 
-All analysis follows a structured flow:
+Advanced analytics is used when businesses want to:
 
-Business Question → SQL Logic → Insight → Decision
-
----
-
-# ⚙️ Techniques Used
-
-This layer uses:
-
-- Complex SQL Queries
-- Window Functions
-- CTE (Common Table Expressions)
-- Subqueries
-- Aggregations
-- Case-based logic
-- Analytical reporting techniques
+| Business Need | Example |
+|---|---|
+| Analyze trends | Sales growth over years |
+| Compare performance | Current year vs previous year |
+| Track KPIs | Revenue, profit, orders |
+| Detect seasonality | Monthly sales patterns |
+| Segment customers | VIP vs regular customers |
+| Measure contribution | Category contribution to revenue |
+| Monitor growth | Running revenue growth |
+| Support executives | Strategic dashboards and reporting |
 
 ---
 
-# 📂 Folder Structure
+# 🏗️ Position in Data Warehouse Architecture
 
-📦 advanced_data_analytics/
+```text
+Raw Data Sources
+        ↓
+Bronze Layer (Raw Data)
+        ↓
+Silver Layer (Cleaned & Transformed Data)
+        ↓
+Gold Layer (Business-Ready Data)
+        ↓
+Advanced Data Analytics Layer
+        ↓
+Business Insights & Decision Making
+```
+
+---
+
+# 🎯 Objectives of This Layer
+
+The main objectives are:
+
+- Analyze business performance
+- Generate business insights
+- Support reporting and dashboards
+- Build KPI logic
+- Compare historical and current data
+- Detect trends and seasonality
+- Segment business entities
+- Support strategic decisions
+
+---
+
+# ⚙️ Core SQL Techniques Used
+
+This layer heavily relies on advanced SQL concepts.
+
+---
+
+## 🔹 Complex Queries
+
+Used to solve real business problems involving:
+
+- Multiple tables
+- Multiple conditions
+- Business calculations
+- Nested logic
+
+---
+
+## 🔹 Window Functions
+
+Window functions perform analytical calculations without collapsing rows.
+
+### Common Window Functions
+
+```sql
+SUM() OVER()
+AVG() OVER()
+LAG()
+LEAD()
+ROW_NUMBER()
+RANK()
+DENSE_RANK()
+```
+
+### Used For
+
+- Running totals
+- Moving averages
+- Ranking
+- YOY analysis
+- Trend analysis
+- Performance comparison
+
+---
+
+## 🔹 CTE (Common Table Expressions)
+
+CTEs help organize large queries into readable logical blocks.
+
+### Example
+
+```sql
+WITH sales_cte AS (
+    SELECT *
+    FROM gold.fact_sales
+)
+SELECT *
+FROM sales_cte;
+```
+
+### Benefits
+
+- Cleaner code
+- Easier debugging
+- Better readability
+- Reusable logic
+
+---
+
+## 🔹 Subqueries
+
+Queries written inside another query.
+
+### Used For
+
+- Filtering
+- Dynamic calculations
+- Comparison logic
+- Conditional analysis
+
+---
+
+## 🔹 Aggregation Functions
+
+Used to summarize business metrics.
+
+### Common Aggregations
+
+```sql
+SUM()
+AVG()
+COUNT()
+MIN()
+MAX()
+```
+
+### Used For
+
+- Revenue analysis
+- Customer count
+- Sales summaries
+- KPI calculations
+
+---
+
+## 🔹 CASE Statements
+
+Used for conditional business logic and segmentation.
+
+### Example
+
+```sql
+CASE
+    WHEN sales > 10000 THEN 'High'
+    WHEN sales > 5000 THEN 'Medium'
+    ELSE 'Low'
+END
+```
+
+### Used For
+
+- Customer segmentation
+- Product classification
+- KPI categorization
+- Business grouping
+
+---
+
+# 📂 Repository Structure
+
+```text
+📦 scripts/
 │
-├── 01_change_over_time_analysis.sql
-├── 02_cumulative_analysis.sql
-├── 03_performance_analysis.sql
-├── 04_data_segmentation.sql
-├── 05_part_to_whole_analysis.sql
-└── README.md
+└── 📁 advanced_data_analytics/
+    │
+    ├── 📄 README.md
+    │
+    ├── 📄 01_change_over_time_analysis.sql
+    │
+    ├── 📄 02_cumulative_analysis.sql
+    │
+    ├── 📄 03_performance_analysis.sql
+    │
+    ├── 📄 04_data_segmentation.sql
+    │
+    ├── 📄 05_part_to_whole_analysis.sql
+```
 
 ---
 
-# 🗂️ Tables Used
+# 🗂️ Gold Layer Tables Used
 
-- gold.fact_sales
-- gold.dim_customers
-- gold.dim_products
+The analytical queries mainly use Gold Layer dimensional modeling tables.
 
 ---
 
-# 📊 Change Over Time Analysis (Trends)
+## 📄 `gold.fact_sales`
 
-Understand how business metrics change over time.
+The central transactional fact table.
 
-Core idea:
-∑Measure BY Date Dimension → Trend
+### Contains
 
-Used for:
-- Sales trend analysis
-- Seasonality detection
+- Sales amount
+- Quantity
+- Orders
+- Revenue
+- Product references
+- Customer references
+- Time references
+
+### Used For
+
+- Trend analysis
+- KPI calculations
+- Revenue reporting
+- Performance analysis
+
+---
+
+## 📄 `gold.dim_customers`
+
+Customer dimension table.
+
+### Contains
+
+- Customer details
+- Customer categories
+- Demographics
+- Customer attributes
+
+### Used For
+
+- Customer segmentation
+- Customer behavior analysis
+- Revenue contribution analysis
+
+---
+
+## 📄 `gold.dim_products`
+
+Product dimension table.
+
+### Contains
+
+- Product details
+- Product categories
+- Brand information
+- Product attributes
+
+### Used For
+
+- Product performance analysis
+- Category contribution analysis
+- Product segmentation
+
+---
+
+# 📊 Core Advanced Analytics Topics
+
+---
+
+# 1️⃣ Change Over Time Analysis (Trend Analysis)
+
+Analyze how a business metric changes over time.
+
+This analysis helps identify:
+
+- Business growth
+- Performance decline
+- Seasonality
+- Long-term trends
+
+---
+
+## 🧠 Core Concept
+
+```text
+∑ [Measure] BY [Date Dimension]
+```
+
+---
+
+## 📌 Examples
+
+```text
+Total Sales BY Year
+Average Sales BY Month
+Total Orders BY Quarter
+```
+
+---
+
+## 📈 Year-Level Analysis
+
+Provides high-level strategic insights.
+
+### Business Value
+
 - Growth tracking
-
-Business value:
-Forecasting, strategic planning, trend insights
+- Forecasting
+- Strategic planning
+- Executive reporting
 
 ---
 
-# 📈 Cumulative Analysis
+## 📅 Month-Level Analysis
 
-Measures how values accumulate over time.
+Provides detailed operational insights.
 
-Core idea:
-Running Total = Current + Previous Values
+### Business Value
+
+- Detect seasonality
+- Understand monthly fluctuations
+- Analyze demand patterns
+
+---
+
+## ⚙️ Common SQL Used
+
+```sql
+GROUP BY
+DATE FUNCTIONS
+AGGREGATIONS
+WINDOW FUNCTIONS
+```
+
+---
+
+# 2️⃣ Cumulative Analysis
+
+Analyze how values accumulate progressively over time.
+
+This helps determine whether the business is continuously growing or declining.
+
+---
+
+## 🧠 Core Concept
+
+```text
+Running Total = Current Value + Previous Values
+```
+
+---
+
+## 📌 Examples
+
+### Running Total
+
+```text
+Running Total Sales BY Month
+```
+
+### Moving Average
+
+```text
+Moving Average Sales BY Month
+```
+
+---
+
+## 🔍 Business Value
 
 Used for:
-- Revenue tracking
-- Growth measurement
-- Performance accumulation
 
-Business value:
-Financial reporting, growth monitoring
+- Revenue growth monitoring
+- Financial reporting
+- Business momentum tracking
+- Long-term growth analysis
 
 ---
 
-# 📉 Performance Analysis
+## ⚙️ Main SQL Technique
 
-Compares current performance against benchmarks.
+```sql
+SUM() OVER()
+AVG() OVER()
+```
 
-Core idea:
+### Example
+
+```sql
+SUM(sales_amount) OVER(
+    ORDER BY order_date
+)
+```
+
+---
+
+# 3️⃣ Performance Analysis
+
+Compare current performance against reference values or benchmarks.
+
+This helps measure business success and efficiency.
+
+---
+
+## 🧠 Core Concept
+
+```text
 Current Value − Reference Value
+```
 
-Examples:
-- Current sales vs previous year sales
-- Product vs average performance
+---
+
+## 📌 Common Examples
+
+### Current vs Average
+
+```text
+Current Sales − Average Sales
+```
+
+### Current Year vs Previous Year (YOY)
+
+```text
+Current Year Sales − Previous Year Sales
+```
+
+### Current vs Best/Worst
+
+```text
+Current Sales − Lowest Sales
+```
+
+---
+
+## 🔍 Business Value
 
 Used for:
+
 - KPI tracking
-- Year-over-year analysis
+- Benchmark analysis
 - Performance evaluation
+- YOY analysis
 
 ---
 
-# 🧩 Data Segmentation
+## ⚙️ Main SQL Technique
 
-Groups data into meaningful business categories.
+```sql
+LAG()
+LEAD()
+AVG() OVER()
+```
 
-Core idea:
-IF condition → Segment assignment
+---
 
-Examples:
-- VIP / Regular / New customers
-- High / Medium / Low value products
+# 4️⃣ Data Segmentation
+
+Group data into meaningful business categories or ranges.
+
+Segmentation helps businesses understand relationships between metrics and classify entities into groups.
+
+---
+
+## 🧠 Core Concept
+
+```text
+IF Condition → Segment Assignment
+```
+
+---
+
+## 📌 Common Examples
+
+### Customer Segmentation
+
+```text
+VIP / Regular / New Customers
+```
+
+### Product Segmentation
+
+```text
+High / Medium / Low Value Products
+```
+
+### Sales Range Segmentation
+
+```text
+Products BY Sales Range
+```
+
+### Age Group Segmentation
+
+```text
+Customers BY Age Group
+```
+
+---
+
+## 🔍 Business Value
 
 Used for:
+
 - Customer targeting
-- Business classification
-- Marketing strategies
+- Marketing campaigns
+- Product categorization
+- Behavioral analysis
 
 ---
 
-# 📊 Part-to-Whole Analysis
+## ⚙️ Main SQL Technique
 
-Shows contribution of each part to total performance.
+```sql
+CASE Statements
+```
 
-Core idea:
-(Part ÷ Whole) × 100
+### Example
+
+```sql
+CASE
+    WHEN sales > 5000 THEN 'High'
+    WHEN sales > 2000 THEN 'Medium'
+    ELSE 'Low'
+END
+```
+
+---
+
+# 5️⃣ Part-to-Whole Analysis (Proportional Analysis)
+
+Analyze how individual entities contribute to the overall business performance.
+
+This identifies which products, categories, customers, or regions contribute the most.
+
+---
+
+## 🧠 Core Concept
+
+```text
+([Part] / Total [Measure]) × 100
+```
+
+---
+
+## 📌 Common Examples
+
+### Revenue Contribution
+
+```text
+(Sales / Total Sales) × 100 BY Category
+```
+
+### Quantity Contribution
+
+```text
+(Quantity / Total Quantity) × 100 BY Country
+```
+
+---
+
+## 🔍 Business Value
 
 Used for:
-- Revenue contribution
+
+- Revenue contribution analysis
 - Market share analysis
-- Category performance comparison
+- Category comparison
+- Identifying top contributors
 
 ---
 
-# ⚙️ SQL Concepts Applied
+## ⚙️ Common SQL Used
 
-Aggregation:
-SUM(), AVG(), COUNT(), MIN(), MAX()
-
-Window Functions:
-SUM() OVER(), AVG() OVER(), LAG(), LEAD()
-
-Logic Handling:
-CASE statements
-
-Structuring:
-CTEs, subqueries, joins
+```sql
+SUM()
+WINDOW FUNCTIONS
+PERCENTAGE CALCULATIONS
+```
 
 ---
 
-# 🚀 Outcome
+# 🔄 End-to-End Analytical Workflow
 
-This layer helps convert raw data into actionable business insights.
-
-It enables understanding of:
-- What is happening
-- Why it is happening
-- How it is changing
-- Where improvement is needed
+```text
+Business Data
+        ↓
+Data Warehouse
+        ↓
+Gold Layer Tables
+        ↓
+Advanced SQL Analytics
+        ↓
+Business Insights
+        ↓
+Reports & Dashboards
+        ↓
+Strategic Decisions
+```
 
 ---
 
-This is the foundation of business intelligence and data-driven decision making.
+# 📊 What This Layer Ultimately Provides
+
+This layer converts raw warehouse data into:
+
+- Business intelligence
+- Strategic insights
+- KPI measurements
+- Growth indicators
+- Executive reporting
+- Analytical dashboards
+
+---
+
+# 🚀 Final Outcome
+
+The Advanced Data Analytics Layer helps organizations:
+
+✅ Understand business performance  
+✅ Monitor growth and decline  
+✅ Compare historical trends  
+✅ Detect seasonality  
+✅ Segment customers and products  
+✅ Measure business contribution  
+✅ Support strategic planning  
+✅ Make data-driven decisions  
+
+---
+
+# 🏁 Conclusion
+
+The Advanced Data Analytics Layer is one of the most important layers in modern Business Intelligence systems.
+
+It transforms structured warehouse data into actionable business insights using advanced SQL analytics.
+
+```text
+Raw Data
+    ↓
+Analytics
+    ↓
+Insights
+    ↓
+Decisions
+    ↓
+Business Growth
+```
+
+This layer enables businesses to move beyond simple reporting and truly understand their data.

@@ -235,15 +235,15 @@ END
     │
     ├── 📄 README.md
     │
-    ├── 📄 01_change_over_time_analysis.sql
+    ├── 📄 01_change_over_time_analysis.sql    # Trend analysis over time (Year/Month)
     │
-    ├── 📄 02_cumulative_analysis.sql
+    ├── 📄 02_cumulative_analysis.sql          # Running totals & moving averages
     │
-    ├── 📄 03_performance_analysis.sql
+    ├── 📄 03_performance_analysis.sql         # Compare current vs past performance
     │
-    ├── 📄 04_data_segmentation.sql
+    ├── 📄 04_data_segmentation.sql            # Group data into business segments
     │
-    ├── 📄 05_part_to_whole_analysis.sql
+    ├── 📄 05_part_to_whole_analysis.sql       # Contribution of parts to total
 ```
 
 ---

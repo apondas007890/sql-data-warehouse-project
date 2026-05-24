@@ -58,7 +58,7 @@ In data warehousing projects, EDA is essential because it ensures that:
 
 # 🏗️ Gold Layer Context
 
-The exploration scripts primarily analyze the Gold Layer of the warehouse.
+The exploration scripts analyze the Gold Layer of the Data Warehouse.
 
 The Gold Layer contains:
 - cleaned,
@@ -68,9 +68,9 @@ The Gold Layer contains:
 
 These tables are optimized for:
 - reporting,
-- business intelligence,
 - KPI analysis,
-- and decision-making.
+- dashboarding,
+- and business intelligence.
 
 ---
 
@@ -81,32 +81,32 @@ These tables are optimized for:
 │
 └── 📁 exploration/
     │
+    │
     ├── 📄 README.md
     │
-    ├── 📄 database_exploration.sql     # Explore schemas, tables, columns, and metadata
+    ├── 📄 01_database_exploration.sql     # Explore schemas, tables, columns, and metadata
     │
-    ├── 📄 dimension_exploration.sql    # Analyze categorical and descriptive business dimensions
+    ├── 📄 02_dimension_exploration.sql    # Analyze dimensions and categorical attributes
     │
-    ├── 📄 date_range_exploration.sql   # Analyze historical timelines and date coverage
+    ├── 📄 03_date_range_exploration.sql   # Analyze historical timelines and date coverage
     │
-    ├── 📄 measures_exploration.sql     # Calculate high-level business KPIs and metrics
+    ├── 📄 04_measures_exploration.sql     # Calculate key business metrics and KPIs
     │
-    ├── 📄 magnitude_analysis.sql       # Compare business measures across dimensions
+    ├── 📄 05_magnitude_analysis.sql       # Compare measures across business dimensions
     │
-    └── 📄 ranking_analysis.sql         # Identify top and bottom performers
+    └── 📄 06_ranking_analysis.sql         # Rank entities based on business performance
+
 ```
 
 ---
 
 # 🗂️ Gold Layer Tables Used
 
-The exploration scripts primarily use the following analytical tables:
-
 | Table Name | Description |
 |---|---|
-| `gold.dim_customers` | Customer dimension containing customer attributes |
-| `gold.dim_products` | Product dimension containing product hierarchy and details |
-| `gold.fact_sales` | Sales fact table containing transactional sales records |
+| `gold.dim_customers` | Customer dimension table |
+| `gold.dim_products` | Product dimension table |
+| `gold.fact_sales` | Sales transactional fact table |
 
 ---
 
@@ -114,14 +114,16 @@ The exploration scripts primarily use the following analytical tables:
 
 The exploration process is divided into multiple analytical stages.
 
-Each stage focuses on a different aspect of the business data.
+Each stage focuses on a different perspective of the business data.
 
 ---
 
 # 1️⃣ Database Exploration
 
-## 📌 Objective
+## 🎯 Objective
 Understand the technical structure of the warehouse.
+
+---
 
 ## 🔎 Focus Areas
 - Schemas
@@ -129,130 +131,178 @@ Understand the technical structure of the warehouse.
 - Columns
 - Data types
 - Metadata
-- Table organization
 
-## 📖 Why It Matters
-Before analyzing data, it is important to understand:
-- what datasets exist,
-- how data is organized,
-- and how tables relate to each other.
+---
 
-Database exploration helps validate:
-- schema design,
-- dimensional modeling,
-- and warehouse structure.
+## 🧠 Core Concept
+
+```text
+Database Structure → Tables → Columns → Relationships
+```
+
+---
+
+## 📖 Purpose
+
+Database exploration helps:
+- understand warehouse structure,
+- inspect schemas and metadata,
+- identify available datasets,
+- and validate table organization.
+
+---
 
 ## ❓ Example Questions
-- What tables are available?
-- What columns exist in each table?
-- Which data types are used?
-- How is the warehouse organized?
+- What tables exist?
+- What columns are available?
+- Which schemas contain business data?
+- What data types are used?
 
 ---
 
 # 2️⃣ Dimension Exploration
 
-## 📌 Objective
+## 🎯 Objective
 Analyze descriptive and categorical business entities.
+
+---
 
 ## 🔎 Focus Areas
 - Countries
-- Product categories
-- Product subcategories
+- Categories
+- Subcategories
 - Customer attributes
 - Product hierarchies
 
-## 📖 Why It Matters
-Dimension tables describe business entities.
+---
 
-These attributes are used to:
-- group data,
-- segment business activity,
-- filter dashboards,
-- and organize reporting structures.
+## 🧠 Core Concept
 
-Dimension exploration helps analysts understand:
-- how business data is categorized,
+```text
+Identify Unique Values (Categories) in Each Dimension
+```
+
+```text
+Dimension → Grouping → Segmentation → Analysis
+```
+
+---
+
+## 📖 Purpose
+
+Dimension exploration helps recognize:
+- how business data can be grouped,
+- how entities are segmented,
 - and how reporting dimensions are structured.
+
+This is useful for:
+- filtering,
+- dashboard slicing,
+- segmentation,
+- and business categorization.
+
+---
 
 ## ❓ Example Questions
 - Which countries do customers belong to?
 - What product categories exist?
-- How are products grouped?
-- What customer segments are available?
+- How are products organized?
 
 ---
 
 # 3️⃣ Date Exploration
 
-## 📌 Objective
-Analyze the temporal boundaries and historical coverage of the dataset.
+## 🎯 Objective
+Analyze the temporal boundaries of the dataset.
+
+---
 
 ## 🔎 Focus Areas
-- Earliest transaction dates
-- Latest transaction dates
+- Earliest dates
+- Latest dates
 - Historical coverage
-- Customer age analysis
 - Timeline validation
+- Customer age analysis
 
-## 📖 Why It Matters
-Businesses operate over time.
+---
 
-Understanding date ranges helps:
-- validate data completeness,
+## 🧠 Core Concept
+
+```text
+MIN(Date) → Earliest Record
+MAX(Date) → Latest Record
+```
+
+```text
+Time Boundaries → Historical Scope → Trend Analysis
+```
+
+---
+
+## 📖 Purpose
+
+Date exploration helps:
 - determine historical depth,
-- support trend analysis,
-- and evaluate data freshness.
+- validate data freshness,
+- understand timespan,
+- and prepare trend analysis.
+
+---
 
 ## ❓ Example Questions
-- What is the first recorded sale?
-- What is the latest transaction?
+- What is the first order date?
+- What is the latest transaction date?
 - How many years of data exist?
-- What is the customer age distribution?
 
 ---
 
 # 4️⃣ Measures Exploration
 
-## 📌 Objective
-Calculate high-level business metrics and KPIs.
+## 🎯 Objective
+Calculate key business metrics and KPIs.
+
+---
 
 ## 🔎 Focus Areas
 - Revenue
-- Quantity sold
+- Quantity
 - Orders
 - Customers
-- Product counts
-- Average pricing
+- Products
+- Pricing
 
-## 📖 Why It Matters
+---
+
+## 🧠 Core Concept
+
+```text
+Highest Level of Aggregation
+```
+
+```text
+∑Sales | AVG(Price) | ∑Quantity
+```
+
+```text
+Measures = Big Business Numbers
+```
+
+---
+
+## 📖 Purpose
+
 Measures represent quantitative business performance.
 
-This stage creates foundational metrics used in:
-- executive dashboards,
-- business reporting,
-- and KPI monitoring systems.
+This stage creates foundational KPIs used in:
+- executive reporting,
+- dashboards,
+- business monitoring,
+- and performance tracking.
 
-## 📊 Types of Aggregation
-
-### High-Level Aggregation
-Summarized business metrics.
-
-Examples:
-- Total Sales
-- Total Customers
-- Total Orders
-
-### Detailed-Level Aggregation
-Granular business analysis.
-
-Examples:
-- Revenue per customer
-- Sales per product
-- Quantity per order
+---
 
 ## ❓ Example Questions
-- What is the total sales revenue?
+- What is total revenue?
 - How many products were sold?
 - What is the average selling price?
 - How many active customers exist?
@@ -261,87 +311,104 @@ Examples:
 
 # 5️⃣ Magnitude Analysis
 
-## 📌 Objective
-Compare measures across business dimensions.
+## 🎯 Objective
+Compare business measures across dimensions.
+
+---
 
 ## 🧠 Core Concept
-Measure (Aggregate) by Dimension
 
-## 📖 Why It Matters
-Magnitude analysis helps determine:
-- which business segments are most important,
-- which categories dominate revenue,
-- and where business activity is concentrated.
+```text
+∑Measure (Aggregate) By Dimension
+```
 
-This analysis helps prioritize:
-- products,
-- customers,
-- categories,
-- and geographic regions.
+### Examples
 
-## 📊 Examples
-- Total sales by country
-- Revenue by category
-- Quantity sold by product
-- Orders by customer
+```text
+∑Sales By Country
+∑Quantity By Category
+AVG(Price) By Product
+∑Orders By Customer
+```
+
+---
+
+## 📖 Purpose
+
+Magnitude analysis helps understand:
+- the importance of business categories,
+- dominant revenue contributors,
+- customer contribution levels,
+- and sales distribution patterns.
+
+It answers:
+- Which category performs best?
+- Which country generates the most revenue?
+- Which customers contribute most to sales?
+
+---
 
 ## ❓ Example Questions
-- Which country generates the highest revenue?
-- Which category sells the most products?
-- Which customers contribute most to sales?
+- Which category generates the highest revenue?
+- Which country sells the most products?
+- Which customers generate the most sales?
 
 ---
 
 # 6️⃣ Ranking Analysis
 
-## 📌 Objective
-Rank business entities based on performance metrics.
-
-## 📖 Why It Matters
-Ranking analysis helps identify:
-- top performers,
-- low performers,
-- growth opportunities,
-- and operational weaknesses.
-
-This type of analysis is widely used in:
-- sales reporting,
-- customer analysis,
-- and executive dashboards.
+## 🎯 Objective
+Order business entities based on performance measures.
 
 ---
 
-## 🏆 Top-N Analysis
+## 🧠 Core Concept
 
-Used to identify highest-performing entities.
+```text
+Rank[Dimension] By ∑Measure (Aggregate)
+```
 
 ### Examples
+
+```text
+Rank Countries By ∑Sales
+Rank Products By ∑Quantity
+Rank Customers By ∑Revenue
+```
+
+---
+
+## 📊 Ranking Types
+
+### 🏆 Top-N Performers
+
+Identify highest-performing entities.
+
+Examples:
 - Top 5 products by revenue
 - Top 10 customers by sales
 - Top categories by quantity sold
 
-### Business Value
-Helps businesses:
-- identify best-selling products,
-- recognize valuable customers,
-- and optimize marketing strategies.
-
 ---
 
-## 📉 Bottom-N Analysis
+### 📉 Bottom-N Performers
 
-Used to identify weakest-performing entities.
+Identify lowest-performing entities.
 
-### Examples
-- Lowest-selling products
+Examples:
+- Bottom 5 products by revenue
 - Customers with fewest orders
 - Low-performing categories
 
-### Business Value
-Helps businesses:
-- identify underperforming areas,
-- improve operational strategies,
-- and reduce inefficiencies.
+---
+
+## 📖 Purpose
+
+Ranking analysis helps businesses:
+- identify top performers,
+- detect weak-performing areas,
+- optimize strategies,
+- and prioritize business decisions.
 
 ---
 
@@ -353,25 +420,27 @@ The exploration scripts use several important SQL analytical techniques.
 
 ## 📌 Aggregation Functions
 
-Used to summarize numerical data.
+Used to summarize numerical values.
 
-### Functions
-- `SUM()`
-- `COUNT()`
-- `AVG()`
-- `MIN()`
-- `MAX()`
+```sql
+SUM()
+COUNT()
+AVG()
+MIN()
+MAX()
+```
 
 ---
 
 ## 📌 Analytical / Window Functions
 
-Used for ranking and advanced calculations.
+Used for ranking and advanced analysis.
 
-### Functions
-- `RANK()`
-- `DENSE_RANK()`
-- `ROW_NUMBER()`
+```sql
+RANK()
+DENSE_RANK()
+ROW_NUMBER()
+```
 
 ---
 
@@ -379,11 +448,12 @@ Used for ranking and advanced calculations.
 
 Used for segmentation and organization.
 
-### Clauses
-- `DISTINCT`
-- `GROUP BY`
-- `ORDER BY`
-- `WHERE`
+```sql
+DISTINCT
+GROUP BY
+ORDER BY
+WHERE
+```
 
 ---
 
@@ -391,9 +461,10 @@ Used for segmentation and organization.
 
 Used to combine multiple datasets.
 
-### Join Types
-- `LEFT JOIN`
-- `INNER JOIN`
+```sql
+LEFT JOIN
+INNER JOIN
+```
 
 ---
 
@@ -401,25 +472,26 @@ Used to combine multiple datasets.
 
 Used for complex analytical logic.
 
-### Techniques
-- Subqueries
-- Window Functions
-- Derived Tables
+```sql
+Subqueries
+Window Functions
+Derived Tables
+```
 
 ---
 
-# 🚀 Final Goal of This Layer
+# 🚀 Final Goal of This Exploration Layer
 
-The exploration layer serves as the analytical foundation of the project.
+The exploration layer acts as the analytical foundation of the project.
 
 Its purpose is to:
-- validate business-ready datasets,
-- understand analytical behavior,
-- generate insights,
-- and support downstream reporting workflows.
+- validate analytical datasets,
+- understand business behavior,
+- generate meaningful insights,
+- and support downstream BI workflows.
 
 This layer prepares the warehouse for:
-- dashboards,
+- dashboard development,
 - KPI reporting,
 - business intelligence,
 - and advanced analytics.
